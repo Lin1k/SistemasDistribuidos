@@ -3,15 +3,17 @@ import java.rmi.RemoteException;
 import java.util.List;
 
 public interface LojaCarroApi extends Remote {
-    void adicionarCarro(Carro carro) throws RemoteException;
+    List<Carro> adicionarCarro(Carro carro) throws RemoteException;
 
-    void apagarCarro(Carro nomeCarro) throws RemoteException;
+    void apagarCarro(String nomeCarro) throws RemoteException;
 
     List<Carro> listarCarros() throws RemoteException;
 
-    List<Carro> pesquisarCarro(String entradaBusca) throws RemoteException;
+    boolean verificaCarro(String entradaBusca) throws RemoteException;
 
-    void alterarCarro(String nomeCarro, Carro novoCarro) throws RemoteException;
+    Carro pesquisarCarro(String entradaBusca) throws RemoteException;
+
+    Carro alterarCarro(String nomeCarro, Carro novoCarro) throws RemoteException;
 
     int quantidadeCarro(String nomeCarro) throws RemoteException;
 

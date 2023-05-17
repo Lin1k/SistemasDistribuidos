@@ -1,6 +1,6 @@
 import java.io.Serializable;
 
-public class Carro implements Serializable {
+public class Carro implements Serializable, Comparable<Carro> {
     private String renavan;
     private String nome;
     private int anoDeFabricacao;
@@ -11,17 +11,18 @@ public class Carro implements Serializable {
     public enum Categoria {
         ECONOMICO,
         INTERMEDIARIO,
-        EXECUTIVO
+        EXECUTIVO,
+        CARRO
     }
 
-    public Carro(String renavan, String nome, int anoDeFabricacao, int quantidadeDisponivel, double preco,
-            Categoria categoria) {
+    public Carro(String renavan, String nome, Categoria categoria, int quantidadeDisponivel, double preco,
+            int anoDeFabricacao) {
         this.renavan = renavan;
         this.nome = nome;
-        this.anoDeFabricacao = anoDeFabricacao;
+        this.categoria = categoria;
         this.quantidadeDisponivel = quantidadeDisponivel;
         this.preco = preco;
-        this.categoria = categoria;
+        this.anoDeFabricacao = anoDeFabricacao;
     }
 
     @Override
@@ -30,8 +31,6 @@ public class Carro implements Serializable {
                 ", Quantidade Disponível: " + quantidadeDisponivel + ", Preço: R$" + preco + ", Categoria: " + categoria
                 + "]";
     }
-
-}
 
     public String getRenavan() {
         return renavan;
@@ -79,5 +78,10 @@ public class Carro implements Serializable {
 
     public void setCategoria(Categoria categoria) {
         this.categoria = categoria;
+    }
+
+    @Override
+    public int compareTo(Carro o) {
+        return this.nome.compareTo(o.getNome());
     }
 }
