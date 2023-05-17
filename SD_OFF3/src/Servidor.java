@@ -16,7 +16,7 @@ public class Servidor implements SuperServidorApi {
 
         @Override
         public String processData(String data) throws RemoteException {
-            // TODO Auto-generated method stub
+            // TODO Auto-generated method skeleton
             return null;
         }
 
@@ -26,7 +26,7 @@ public class Servidor implements SuperServidorApi {
 
         @Override
         public String processData(String data) throws RemoteException {
-            // TODO Auto-generated method stub
+            // TODO Auto-generated method skeleton
             return null;
         }
 
@@ -36,7 +36,7 @@ public class Servidor implements SuperServidorApi {
 
         @Override
         public String processData(String data) throws RemoteException {
-            // TODO Auto-generated method stub
+            // TODO Auto-generated method skeleton
             return null;
         }
 
@@ -49,21 +49,21 @@ public class Servidor implements SuperServidorApi {
         // Aqui a criação e registro dos nós escravos
         try {
             NoSeguidor1 noSeguidor1 = new NoSeguidor1();
-            SuperServidorApi stub1 = (SuperServidorApi) UnicastRemoteObject.exportObject(noSeguidor1, 0);
+            SuperServidorApi skeleton1 = (SuperServidorApi) UnicastRemoteObject.exportObject(noSeguidor1, 0);
             Registry registro1 = LocateRegistry.createRegistry(00001);
-            registro1.bind("NoSeguidor1", stub1);
+            registro1.bind("NoSeguidor1", skeleton1);
             NosSeguidores.add(noSeguidor1);
 
             NoSeguidor2 noSeguidor2 = new NoSeguidor2();
-            SuperServidorApi stub2 = (SuperServidorApi) UnicastRemoteObject.exportObject(noSeguidor2, 0);
+            SuperServidorApi skeleton2 = (SuperServidorApi) UnicastRemoteObject.exportObject(noSeguidor2, 0);
             Registry registro2 = LocateRegistry.createRegistry(00002);
-            registro2.bind("NoSeguidor2", stub2);
+            registro2.bind("NoSeguidor2", skeleton2);
             NosSeguidores.add(noSeguidor2);
 
             NoSeguidor3 noSeguidor3 = new NoSeguidor3();
-            SuperServidorApi stub3 = (SuperServidorApi) UnicastRemoteObject.exportObject(noSeguidor3, 0);
+            SuperServidorApi skeleton3 = (SuperServidorApi) UnicastRemoteObject.exportObject(noSeguidor3, 0);
             Registry registro3 = LocateRegistry.createRegistry(00003);
-            registro3.bind("NoSeguidor3", stub3);
+            registro3.bind("NoSeguidor3", skeleton3);
             NosSeguidores.add(noSeguidor3);
 
         } catch (Exception e) {
@@ -129,15 +129,15 @@ public class Servidor implements SuperServidorApi {
     public static void main(String[] args) {
         try {
             SuperServidorApi obj = new Servidor();
-            SuperServidorApi stub = (SuperServidorApi) UnicastRemoteObject.exportObject(obj, 0);
+            SuperServidorApi skeleton = (SuperServidorApi) UnicastRemoteObject.exportObject(obj, 0);
 
             // Criação do registro RMI na porta 1099
             Registry registroRMI = LocateRegistry.createRegistry(1010);
 
             // Binding do objeto remoto no registro
-            registroRMI.bind("SuperServidorApi", stub);
+            registroRMI.bind("SuperServidorApi", skeleton);
 
-            System.out.println("Servidor pronto para receber requisições.");
+            System.out.println("Servidor pronto para receber requisicoes.");
         } catch (Exception e) {
             System.err.println("Erro no servidor: " + e.toString());
             e.printStackTrace();
