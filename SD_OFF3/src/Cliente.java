@@ -13,7 +13,7 @@ public class Cliente {
             //
             String saida = superServidorApi.processData("Dado foda");
 
-            System.out.println("Saída do servidor:" + saida);
+            System.out.println("Saida do servidor:" + saida);
 
         } catch (Exception e) {
             System.err.println("Erro no cliente: " + e.toString());
